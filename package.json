@@ -1,0 +1,35 @@
+{
+  "name": "1.authentication-and-authorization",
+  "version": "1.0.0",
+  "description": "User Authentication & Authorization",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "authentication",
+    "authorization",
+    "role-based",
+    "acces",
+    "control",
+    "jwt",
+    "bcrypt",
+    "helmet",
+    "cors",
+    "rate",
+    "limiting"
+  ],
+  "author": "Abdus Samad",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "dotenv": "^17.0.1",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.16.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
