@@ -5,7 +5,7 @@ import bcrypt from "bcrypt";
 import { generateToken } from "../utills/jwt.js";
 
 export const registerService = async (userData) => {
-  const { name, email, password } = userData;
+  const { name, email, password, role } = userData;
   try {
     //check if user already exists
     const existingUser = await User.find({ email });
@@ -20,6 +20,7 @@ export const registerService = async (userData) => {
       name,
       email,
       password: hashedPassword,
+      role, // Include role in user creation
     });
     return newUser;
   } catch (err) {
@@ -46,7 +47,7 @@ export const loginService = async (credentials) => {
       throw new ApiError("Invalid email or password", 401); // generic message for security
     }
     // ✅ Step 3: Genreate JWT token
-    const token = generateToken(user._id);
+    const token = generateToken(user._id, user.role);
     console.log("Token generated:", token);
 
     // ✅ Step 4: Return user (safe fields only)
@@ -55,8 +56,9 @@ export const loginService = async (credentials) => {
         id: user._id,
         name: user.name,
         email: user.email,
+        role: user.role, // Include role in the user object
       },
-      token: token // Send the token back to the client
+      token: token, // Send the token back to the client
     };
   } catch (err) {
     console.log("Error in registerService:", err);

@@ -20,6 +20,11 @@ const userSchema = new mongoose.Schema(
     //   minLength: [6, "Must be at least 6 got {VALUE} characters"],
     //   maxLength: [12, "Must be at most 12 got {VALUE} characters"],
     },
+    role:{
+      type: String,
+      enum: ["user","admin"],
+      default: "user",
+    }
   },
   { timestamps: true }
 );
